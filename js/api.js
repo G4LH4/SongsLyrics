@@ -8,15 +8,21 @@ export default class API {
 
     consultarAPI(){
         const url = `https://api.lyrics.ovh/v1/${this.artista}/${this.cancion}`;
-        spinerCarga();
+        spinerCarga()
 
         fetch(url)
         .then( respuesta => respuesta.json())
         .then( resultado => {
             const {lyrics} = resultado;
 
-            UI.divResultado.textContent = lyrics;
-            UI.headingResultado.textContent = `Letra de la canción: ${this.cancion} de ${this.artista}`;
+            if(lyrics === console.error()){
+                UI.headingResultado.textContent = `Letra de la canción: ${this.cancion} de ${this.artista} No encontrada`;
+            }else{
+                UI.divResultado.textContent = lyrics;
+                UI.headingResultado.textContent = `Letra de la canción: "${this.cancion}" de ${this.artista}`;
+            }
+
+            
         })
     }
 }
