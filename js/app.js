@@ -18,12 +18,18 @@ function buscarCancion(e){
             UI.divMensajes.textContent = '';
             UI.divMensajes.classList.remove('error');
         },3000)
+
+        UI.headingResultado.textContent = '';
+        UI.divResultado.textContent = '';
         return;
     }
+
+    
 
     // Consultar nuestra api
 
     const busqueda = new API(artista, cancion);
     busqueda.consultarAPI();
 };
+
 
